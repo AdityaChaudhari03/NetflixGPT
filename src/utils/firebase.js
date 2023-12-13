@@ -1,17 +1,19 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAzlL3SBseLG6ZideTzRl79Q-MjOFctaTs",
-  authDomain: "netflixgpt-cc0b2.firebaseapp.com",
-  projectId: "netflixgpt-cc0b2",
-  storageBucket: "netflixgpt-cc0b2.appspot.com",
-  messagingSenderId: "897941058337",
-  appId: "1:897941058337:web:66e5a3483e4fb7ba364460",
-  measurementId: "G-VYHNDLG30Z"
+  apiKey: "AIzaSyB6ewtvz3uwWBMYsSrKnFeZo2NSFqv24Ao",
+  authDomain: "netflixgpt-53758.firebaseapp.com",
+  projectId: "netflixgpt-53758",
+  storageBucket: "netflixgpt-53758.appspot.com",
+  messagingSenderId: "29773908667",
+  appId: "1:29773908667:web:5cc896123666ed1c7fb79e",
+  measurementId: "G-MW6GGFHK9M"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 

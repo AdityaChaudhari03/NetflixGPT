@@ -3,7 +3,7 @@ import Header from "./Header";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  updateProfile
+  updateProfile,
 } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
@@ -21,10 +21,7 @@ const Login = () => {
   const fullName = useRef(null);
 
   const handleBtnClick = (email, password) => {
-    const message = checkValidData(
-      email.current.value,
-      password.current.value
-    );
+    const message = checkValidData(email.current.value);
     setErrorMessage(message);
     if (message) return;
 
@@ -38,14 +35,22 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: fullName.current.value,
-            photoURL: "https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-88wkdmjrorckekha.jpg",
+            photoURL:
+              "https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-88wkdmjrorckekha.jpg",
           })
             .then(() => {
-              const {uid, email, displayName, photoURL} = auth.currentUser;
-              dispatch(addUser({uid:uid , email:email, displayName:displayName, photoUrl :photoURL}));
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoUrl: photoURL,
+                })
+              );
             })
             .catch((error) => {
-              setErrorMessage(error)
+              setErrorMessage(error);
             });
         })
         .catch((error) => {
@@ -89,13 +94,6 @@ const Login = () => {
               {signIn ? "Sign In" : "Sign Up"}
             </h1>
             <form onSubmit={(e) => e.preventDefault()}>
-              <input
-                ref={email}
-                type="text"
-                name="email"
-                placeholder="Email or phone number"
-                className="bg-[#333] w-full rounded-sm py-3 text-white pl-4 outline-none mb-4"
-              />
               {!signIn && (
                 <input
                   ref={fullName}
@@ -105,6 +103,13 @@ const Login = () => {
                   className="bg-[#333] w-full rounded-sm py-3 mb-4 text-white pl-4 outline-none"
                 />
               )}
+              <input
+                ref={email}
+                type="text"
+                name="email"
+                placeholder="Email or phone number"
+                className="bg-[#333] w-full rounded-sm py-3 text-white pl-4 outline-none mb-4"
+              />
               <input
                 ref={password}
                 type="password"

@@ -10,7 +10,7 @@ const useUpcomingMovies = () => {
         const data = await fetch(UPCOMING_MOVIESURL, options);
         const json = await data.json();
         dispatch(addUpcomingMovies(json?.results));
-        console.log(json)
+        // console.log(json)
     }
     useEffect(()=>{
         !upcomingMovies && getUpcomingMovies();
